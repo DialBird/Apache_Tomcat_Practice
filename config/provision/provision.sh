@@ -20,7 +20,18 @@ service postgresql start
 chkconfig postgresql on
 
 # tomcat
-cp -r config/tomcat/apache-tomcat-8.0.37 /usr/local
-chmod u+x /usr/local/apache-tomcat-8.0.37/bin/startup.sh
-chmod u+x /usr/local/apache-tomcat-8.0.37/bin/shutdown.sh
-chmod u+x /usr/local/apache-tomcat-8.0.37/bin/catalina.sh
+cp -r config/tomcat/apache-tomcat-8.0.37 /opt
+chmod u+x /opt/apache-tomcat-8.0.37/bin/startup.sh
+chmod u+x /opt/apache-tomcat-8.0.37/bin/shutdown.sh
+chmod u+x /opt/apache-tomcat-8.0.37/bin/catalina.sh
+
+# apache
+yum -y install pcre pcre-devel wget gcc make bison flex
+cp -r config/apache/apr-1.5.2 /usr/local/src
+cp -r config/apache/apr-util-1.5.4 /usr/local/src
+cp -r config/apache/httpd-2.4.23 /usr/local/src
+cd /usr/local/src/apr-1.5.2 && ./configure --prefix=/opt/apr/apr-1.5.2 && make && make install
+cd /usr/local/src/apr-util-1.5.4 && ./configure --prefix=/opt/apr-util/apr-util-1.5.4 --with-apr=/opt/apr/apr-1.5.2 && make && make install
+cd /usr/local/src/httpd-2.4.23 && ./confgure --prefix=/opt/httpd/httpd-2.4.23 --with-apr=/opt/apr/apr-1.5.2 --with-apr-util=/opt/apr-util/apr-util/apr-util-1.5.4
+cp config/apache/httpd-proxy.conf
+cat "include /opt/httpd/httpd-2.4.23/conf/extra/httpd-proxy.conf" >> /opt/httpd/httpd-2.4.23/conf/httpd.conf
