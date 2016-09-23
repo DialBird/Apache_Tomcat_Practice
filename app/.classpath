@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/taniguchikeisuke/Desktop/MyVagrant/apache_tomcat_app_test/config/lib/el-api.jar"/>
+	<classpathentry kind="lib" path="/Users/taniguchikeisuke/Desktop/MyVagrant/apache_tomcat_app_test/config/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="/Users/taniguchikeisuke/Desktop/MyVagrant/apache_tomcat_app_test/config/lib/servlet-api.jar"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>
