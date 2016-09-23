@@ -1,7 +1,4 @@
-#!/bin/bash -ex
-
-yum -y update
-
+#!/bin/bash -ex yum -y update 
 # timezone
 cat "ZONE='Asia/Tokyo'" > /etc/sysconfig/clock
 hwclock --systohc
